@@ -1,2 +1,2 @@
-Sea state and sea conditions retrieval using opemMeteo API | 
+Sea state and sea conditions fetched using openMeteo API | 
 Web application developed using Streamlit 

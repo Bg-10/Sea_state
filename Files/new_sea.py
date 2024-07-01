@@ -70,7 +70,7 @@ class SeaStateClassifier:
         elif 5.5 < self.current_wave_height <=7.5:
             return "Sea State 8 condition: dense foam, reduced visibility, gale"
         elif 7.5<self.current_wave_height<=14:
-            return "Sea state 9 condition : strong gale with sprays and low visibility"
+            return "Sea state 9 condition : strong Gale with sprays and low visibility"
         elif self.current_wave_height > 14:
             return "Sea state 10 condition: Violent storm with Serios visibility affected"
 

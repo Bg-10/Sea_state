@@ -78,16 +78,12 @@ classifier = SeaStateClassifier(current_wave_height)
 sea_state_info = classifier.classify_sea_state()
 st.info(sea_state_info)
 
-def write_to_text_file(data, filename):
-    with open(filename, 'w') as file:
+def write_to_csv(data, filename):
+    with open(filename, mode='w',newline='') as file:
         for item in data:
-            file.write(f"Latitude: {item['latitude']}, Longitude: {item['longitude']}\n")
-            file.write(f"Wave Height: {item['wave_height']} meters\n")
-            file.write(f"Wave Period: {item['wave_period']} seconds\n")
-            file.write(f"Ocean Current Velocity: {item['ocean_current_velocity']} m/s\n")
-            file.write(f"Ocean Current Direction: {item['ocean_current_direction']} degrees\n")
-            file.write(f"Sea State Condition: {item['sea_state_condition']}\n")
-            file.write("\n")
+            writer=csv.DictWriter(file,fieldnames=data[0].keys())
+            writer.writeheader()
+            writer.writerows(data)
 sea_data=[]
 data_item={ 'latitude': lat,
             'longitude': lng,
@@ -97,4 +93,4 @@ data_item={ 'latitude': lat,
             'ocean_current_direction': current_ocean_current_direction,
             'sea_state_condition': sea_state_info}
 sea_data.append(data_item)
-write_to_text_file(sea_data, 'sea_state_data.txt')
+write_to_csv(sea_data, 'sea_state_data.csv')
